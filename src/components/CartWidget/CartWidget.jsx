@@ -1,11 +1,12 @@
 import cart from "./assets/cart.png"
+
 const CartWidget = () => {
 
 return(
-    <div>
+    <div >
         <img src={cart} alt="cart-widget" />
         
-        0
+        <span className="cart-count">0</span>
     </div>
 )
 

@@ -1,5 +1,12 @@
+import './Button.css';
 const Button = (props) => {
-    console.log(props )
-    return <button onClick={props.handleClick} className="btn btn-secondary" >{props.label}</button>
-}
-export default Button
+  const { handleClick } = props;
+
+  return (
+    <button onClick={handleClick} className="custom-btn">
+      {props.label}
+    </button>
+  );
+};
+
+export default Button;

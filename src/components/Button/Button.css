@@ -1,0 +1,22 @@
+/* Button.css */
+
+.custom-btn {
+  background-color: rgb(41, 40, 40);
+  color: white;
+  border: none;
+  transition: background-color 0.3s;
+  margin: 10px;
+  border-radius: 1rem;
+  font-size: 17px;
+}
+
+.custom-btn:hover {
+  background-color: rgb(155, 57, 40);
+}
+.custom-btn {
+  text-decoration: none;
+}
+
+.cart-count{
+  color: aliceblue;
+}
