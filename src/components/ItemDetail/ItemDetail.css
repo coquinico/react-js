@@ -14,4 +14,13 @@
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );}
     
+
+
+.ItemImg {
+    max-width: 100%; 
+    height: auto; 
+    display: block;
+    margin: 0 auto; 
+    max-height: 400px; 
+  }
   

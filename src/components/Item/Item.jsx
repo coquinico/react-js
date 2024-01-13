@@ -14,7 +14,7 @@ const Item = ({ id, name, img, price, stock }) => {
   };
 
   return (
-    <div className="col-lg-3 col-md-6 my- mx-auto">
+    <div className="col-lg-3 col-md-6 my-3 mx-auto">
       <div className="card custom-card">
         <img src={img} className="card-img-top" alt={name} />
         <div className="card-body">

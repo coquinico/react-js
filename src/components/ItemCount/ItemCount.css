@@ -1,13 +1,12 @@
 
 .item-count-container {
     text-align: center;
-    margin-top: 15rem;
+    margin-top: 13rem;
+
   }
   
   .item-count-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
   }
   
   .custom-btn {
