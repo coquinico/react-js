@@ -25,7 +25,9 @@ const products = [
                 category:'Speakers',
                 img: "https://imgs.search.brave.com/Onhly0eN4CItF6h-tsVsPlLT6MasdtPbSZfeQoC_fxk/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuYmhwaG90by5j/b20vaW1hZ2VzL2lt/YWdlczM0NXgzNDUv/MTYzNDcyMTcxN18x/NjYxMjU4LmpwZw",
                 stock:'10',
-                description: 'Altavoz portátil Bluetooth, altavoz impermeable inalámbrico'  }
+                description: 'Altavoz portátil Bluetooth, altavoz impermeable inalámbrico'  },
+                
+                
             
 ]
 
@@ -45,8 +47,10 @@ export const getProductsById = (productId) => {
 }
 export const getProductsByCategory = (categoryId) => {
     return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(products.filter(prod => prod.category === categoryId))
-        }, 1000)
-    })
-}
+      setTimeout(() => {
+        const lowerCaseCategoryId = categoryId.toLowerCase();
+        resolve(products.filter(prod => prod.category.toLowerCase() === lowerCaseCategoryId));
+      }, 1000);
+    });
+  };
+  

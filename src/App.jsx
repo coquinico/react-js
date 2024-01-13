@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ItemListContainer greeting={"Music Store"} />}/>
           <Route path="/item/:productId" element={ <ItemDetailContainer />}/>
-          <Route path="/category/:categoryId" element={ <ItemDetailContainer greeting={"Listado de los Productos filtrados"} />}/>
+          <Route path="/category/:categoryId" element={ <ItemListContainer greeting={"Listado de los Productos filtrados"} />}/>
           {/* <MercadoLibre/> */}
          
         </Routes>
