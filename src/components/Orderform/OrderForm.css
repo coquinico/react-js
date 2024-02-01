@@ -1,0 +1,39 @@
+
+
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+ 
+
+    
+
+  }
+  
+  .Form {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(135, 31, 31, 0.37);
+    backdrop-filter: blur( 12px );
+    -webkit-backdrop-filter: blur( 12px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );}
+  }
+  
+  .Label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333; /* Color del texto */
+  }
+  
+  .Input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+  }
+  

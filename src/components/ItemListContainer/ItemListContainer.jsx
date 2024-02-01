@@ -1,33 +1,75 @@
-import { useState, useEffect } from 'react';
-import './ItemListContainer.css';
-import { getProducts, getProductsByCategory } from '../../asyncMock.jsx';
-import ItemList from '../ItemList/ItemList.jsx';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react"
+// import { getProducts, getProductsByCategory } from "../../asyncMock"
+import ItemList from "../ItemList/ItemList"
+import { useParams } from "react-router-dom"
+import { useNotification } from "../../notification/NotificationService"
+import { db } from "../../services/firebase/firebaseConfig"
+import { getDocs, collection, query, where } from "firebase/firestore"
 
 const ItemListContainer = ({ greeting }) => {
-  const [products, setProducts] = useState([]);
-  const { categoryId } = useParams();
+    const [loading, setLoading] = useState(true)
+    const [products, setProducts] = useState([])
 
-  useEffect(() => {
-    const asyncFunction = categoryId ? getProductsByCategory : getProducts;
+    const { categoryId } = useParams()
 
-    asyncFunction(categoryId)
-      .then(response => {
-        setProducts(response);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, [categoryId]);
+    const { showNotification } = useNotification()
 
-  console.log(products);
+    useEffect(() => {
+        if(categoryId) document.title = 'Ecommerce: ' + categoryId 
+        
+        return () => {
+            document.title = 'Ecommerce'
+        }
+    })
 
-  return (
-    <div>
-      <h1>{greeting}</h1>
-      <ItemList products={products} />
-    </div>
-  );
-};
+    useEffect(() => {
+        setLoading(true)
+      
+        const productstCollection = categoryId
+        ?query(collection (db, 'products'), where('category','==', categoryId))
+        :collection (db, 'products')
 
-export default ItemListContainer;
+        getDocs(productstCollection)
+
+        .then(querySnapshot => {
+          const productsAdapted = querySnapshot.docs.map(doc =>{
+            const fields = doc.data()
+            return{ id: doc.id, ...fields}
+          })
+          setProducts(productsAdapted)
+        })
+
+        .catch(error =>(
+          showNotification('error', 'Hubo un error')
+        ))
+
+        .finally(() => {
+          setLoading(false)
+        })
+/*         const asyncFunction = categoryId ? getProductsByCategory : getProducts
+
+        asyncFunction(categoryId)
+            .then(response => {
+                setProducts(response)
+            })
+            .catch(error => {
+                showNotification('error', 'Hubo un error cargando los productos')
+            })
+            .finally(() => {
+                setLoading(false)
+            }) */
+    }, [categoryId])
+
+    if(loading) {
+        return <h1>Cargando los productos...</h1>
+    }
+
+    return (
+        <div>
+            <h1>{greeting + (categoryId ?? '')}</h1>
+            <ItemList products={products}/>
+        </div>
+    )
+}
+
+export default ItemListContainer

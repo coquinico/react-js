@@ -12,10 +12,19 @@ const Item = ({ id, name, img, price, stock }) => {
       console.error('Error al obtener detalles del producto:', error);
     }
   };
+  const cardStyle = {
+    background: 'rgba(239, 239, 239, 0.25)',
+    boxShadow: '0 8px 32px 0 rgba(135, 31, 31, 0.37)',
+    backdropFilter: 'blur(4px)',
+    WebkitBackdropFilter: 'blur(4px)',
+    borderRadius: '10px',
+    border: '1px solid rgba(255, 255, 255, 0.18)',
+  };
+
 
   return (
-    <div className="col-lg-3 col-md-6 my-3 mx-auto">
-      <div className="card custom-card">
+    <div className="col-lg-3 col-md-6 mb-3 mt-3 mx-auto">
+      <div className="card custom-card" style={cardStyle}>
         <img src={img} className="card-img-top" alt={name} />
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
