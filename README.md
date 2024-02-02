@@ -44,7 +44,7 @@ REACT_APP_FIREBASE_PROJECT_ID=TuProjectId
 
  # Inicia la Aplicación:
     `bash
-    npm start
+    npm run dev
 
 La aplicación estará disponible en http://localhost:3000.
 
