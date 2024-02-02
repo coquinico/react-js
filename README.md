@@ -33,7 +33,7 @@ Sigue estos pasos para clonar y configurar el proyecto en tu entorno local:
 - Crea un archivo .env en la raíz del proyecto y agrega las variables de entorno necesarias:
 
   env
-  <br>
+<br>
 VITE_apiKey=AIzaSyD4oqUAiVn0qABuxy90UeFZxauZMlCOHO0
 <br>
 VITE_authDomain=ecommerce-coderh-6c65c.firebaseapp.com
