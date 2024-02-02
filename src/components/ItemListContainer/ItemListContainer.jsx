@@ -3,8 +3,7 @@ import { useState, useEffect } from "react"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import { useNotification } from "../../notification/NotificationService"
-import { db } from "../../services/firebase/firebaseConfig"
-import { getDocs, collection, query, where } from "firebase/firestore"
+import { getProducts } from "../../services/firebase/firestore/products"
 
 const ItemListContainer = ({ greeting }) => {
     const [loading, setLoading] = useState(true)
@@ -25,27 +24,16 @@ const ItemListContainer = ({ greeting }) => {
     useEffect(() => {
         setLoading(true)
       
-        const productstCollection = categoryId
-        ?query(collection (db, 'products'), where('category','==', categoryId))
-        :collection (db, 'products')
-
-        getDocs(productstCollection)
-
-        .then(querySnapshot => {
-          const productsAdapted = querySnapshot.docs.map(doc =>{
-            const fields = doc.data()
-            return{ id: doc.id, ...fields}
-          })
-          setProducts(productsAdapted)
-        })
-
-        .catch(error =>(
-          showNotification('error', 'Hubo un error')
-        ))
-
-        .finally(() => {
-          setLoading(false)
-        })
+       getProducts(categoryId)
+       .then(products => {
+        setProducts(products)
+       })
+       .catch(error =>{
+        showNotification('error', 'Hubo un error')
+       })
+       .finally(() => {
+        setLoading(false)
+       })
 /*         const asyncFunction = categoryId ? getProductsByCategory : getProducts
 
         asyncFunction(categoryId)

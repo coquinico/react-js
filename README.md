@@ -34,13 +34,17 @@ Sigue estos pasos para clonar y configurar el proyecto en tu entorno local:
 
   env
   <br>
-REACT_APP_FIREBASE_API_KEY=TuApiKey
-  <br>
-REACT_APP_FIREBASE_AUTH_DOMAIN=TuAuthDomain
-  <br>
-REACT_APP_FIREBASE_PROJECT_ID=TuProjectId
-  <br>
-(Agrega otras variables según sea necesario)
+VITE_apiKey=AIzaSyD4oqUAiVn0qABuxy90UeFZxauZMlCOHO0
+<br>
+VITE_authDomain=ecommerce-coderh-6c65c.firebaseapp.com
+<br>
+VITE_projectId=ecommerce-coderh-6c65c
+<br>
+VITE_storageBucket=ecommerce-coderh-6c65c.appspot.com
+<br>
+VITE_messagingSenderId=692626648761
+<br>
+VITE_appId=1:692626648761:web:34a012838312b263043568
 
  # Inicia la Aplicación:
     `bash
@@ -50,9 +54,6 @@ La aplicación estará disponible en http://localhost:3000.
 
 
 
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
 

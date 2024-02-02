@@ -1,13 +1,22 @@
 import { useState } from 'react';
-import "../Orderform/OrderForm.css"
+import "../Orderform/OrderForm.css";
+import { useNotification } from '../../notification/NotificationService';
 
 const OrderForm = ({ onConfirm }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
 
+  const { showNotification } = useNotification();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!name.trim() || !phone.trim() || !email.trim()) {
+      
+      showNotification('error', 'Por favor, completa todos los campos del formulario.');
+      return;
+    }
 
     const userData = {
       name,
@@ -15,6 +24,15 @@ const OrderForm = ({ onConfirm }) => {
       email,
     };
 
+    
+    setName('');
+    setPhone('');
+    setEmail('');
+
+    
+    showNotification('success', 'Formulario enviado correctamente.');
+
+    
     onConfirm(userData);
   };
 
